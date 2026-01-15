@@ -2,9 +2,12 @@
 const nextConfig = {
   webpack: (config) => {
     config.module.rules.push({
-      test: /\.test\.js$/,
+      test: /node_modules\/.*\.test\.js$/,
       use: 'null-loader',
     })
+
+    config.resolve.alias['tap'] = false
+
     return config
   },
 }
