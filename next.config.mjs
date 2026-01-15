@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.test\.js$/,
+      use: 'null-loader',
+    })
+    return config
   },
 }
 
-export default nextConfig
+module.exports = nextConfig
